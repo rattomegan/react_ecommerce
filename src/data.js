@@ -21,3 +21,22 @@ export const sliderItems = [
     bg: 'fbf0f4',
   },
 ]
+
+export const categories = [
+  {
+    id: 1,
+    img: 'https://images.unsplash.com/photo-1512951670161-b5c6c632b00e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+    title: 'Rubber Trees',
+  },
+  {
+    id: 2,
+    img: 'https://images.unsplash.com/photo-1598764557991-b9f211b73b81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80',
+    title: 'Monsteras',
+  },
+  {
+    id: 3,
+    img: 'https://images.unsplash.com/photo-1517042256700-ce7bb683950b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=676&q=80',
+    title: 'Cacti',
+  },  
+
+]
