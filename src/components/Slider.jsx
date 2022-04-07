@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { useState } from "react";
+import { sliderItems } from '../data';
 
 const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
   position: relative;
+  overflow: hidden;
 
 `
 const Arrow = styled.div`
@@ -25,10 +28,13 @@ const Arrow = styled.div`
   margin: auto;
   cursor: pointer;
   opacity: 0.5;
+  z-index: 2;
 `;
 
 const Wrapper = styled.div`
   height: 100%;
+  display: flex;
+  transform: translateX(${(props) => props.slideIndex * -100}vw);
 `;
 
 const Slide = styled.div`
@@ -36,16 +42,17 @@ const Slide = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
+  background-color: #${props => props.bg};
 `;
 
 const ImgContainer = styled.div`
   height: 100%;
   flex: 1;
-  padding: 50px;
+  padding: 30px;
 `;
 
 const Img = styled.img`
-  height: 74%;
+  height: 80%;
 `;
 
 const InfoContainer = styled.div`
@@ -54,7 +61,7 @@ const InfoContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 70px;
+  font-size: 60px;
   text-transform: uppercase;
 `;
 
@@ -62,8 +69,8 @@ const Description = styled.p`
   margin: 50px 0;
   font-size: 20px;
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 3px;
+  /* text-transform: uppercase; */
+  /* letter-spacing: 3px; */
 `;
 
 const Button = styled.button`
@@ -74,26 +81,45 @@ const Button = styled.button`
 `;
 
 const Slider = () => {
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  const handleClick = (direction) => {
+    if(direction === 'left') {
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1  : 2) 
+    } else {
+      setSlideIndex(slideIndex < 2 ? slideIndex + 1  : 0)
+    }
+  }
+
   return (
     <Container>
-      <Arrow direction='left'>
+
+      <Arrow direction='left' onClick={() => handleClick('left')}>
         <ArrowLeftIcon />
       </Arrow>
-      <Wrapper>
-        <Slide>
-          <ImgContainer>
-            <Img src='https://images.unsplash.com/photo-1531875456634-3f5418280d20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>Spring Sale</Title>
-            <Description>Plant Sale 20% off new arrivals!</Description>
-            <Button>Shop Now</Button>
-          </InfoContainer>
-        </Slide>
+
+      <Wrapper slideIndex={slideIndex}>
+        {sliderItems.map(item => (
+          <Slide bg={item.bg} key={item} >
+            <ImgContainer>
+              <Img src={item.img} />
+            </ImgContainer>
+            <InfoContainer>
+              <Title>{item.title}</Title>
+              <Description>{item.description}</Description>
+              <Button>Shop Now</Button>
+            </InfoContainer>
+          </Slide>
+        ))}
+
+
+
       </Wrapper>
-      <Arrow direction='right'>
+
+      <Arrow direction='right' onClick={() => handleClick('right')}>
         <ArrowRightIcon />
       </Arrow>
+
     </Container>
   )
 }
