@@ -58,7 +58,7 @@ const Img = styled.img`
 
 const InfoContainer = styled.div`
   flex: 1;
-  padding: 50px;
+  padding: 30px;
 `;
 
 const Title = styled.h1`
@@ -101,7 +101,7 @@ const Slider = () => {
 
       <Wrapper slideIndex={slideIndex}>
         {sliderItems.map(item => (
-          <Slide bg={item.bg} key={item} >
+          <Slide bg={item.bg} key={item.id} >
             <ImgContainer>
               <Img src={item.img} />
             </ImgContainer>
