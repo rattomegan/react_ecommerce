@@ -76,7 +76,7 @@ const Navbar = () => {
         </Left>
 
         <Center>
-          <Logo>Fools and Company</Logo>
+          <Logo>Plant House</Logo>
         </Center>
 
         <Right>

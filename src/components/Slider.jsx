@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { sliderItems } from '../data';
 
 const Container = styled.div`
@@ -83,6 +83,12 @@ const Button = styled.button`
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSlideIndex(slideIndex < 2 ? slideIndex + 1  : 0)
+    }, 3000)
+  },[])
 
   const handleClick = (direction) => {
     if(direction === 'left') {
