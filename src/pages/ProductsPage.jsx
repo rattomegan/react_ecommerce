@@ -34,7 +34,7 @@ const Select = styled.select`
 
 const Option = styled.option``;
 
-const ProductList = () => {
+const ProductsPage = () => {
   return (
     <Container>
       <Navbar />
@@ -68,4 +68,4 @@ const ProductList = () => {
   )
 }
 
-export default ProductList
+export default ProductsPage;
